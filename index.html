@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomasz Głowacki - CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 40px;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 20px;
+            background-color: #c7d2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--primary);
+        }
+        
+        .header-title h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header-title h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+        }
+        
+        /* Main Content Styles */
+        section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            position: relative;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 60px;
+            background-color: var(--primary);
+        }
+        
+        .summary {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            background-color: var(--light-gray);
+            left: 16px;
+            top: 0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            z-index: 1;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .period {
+            background-color: var(--light-gray);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .job-description ul {
+            list-style-type: none;
+        }
+        
+        .job-description li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .job-description li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Education */
+        .education-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-gray);
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Interests */
+        .interests {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .interests-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .interest-tag {
+            display: flex;
+            align-items: center;
+            background-color: var(--light-gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .interest-tag i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        .interest-tag:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .interest-tag:hover i {
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .download-cv {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .download-cv:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .timeline-header {
+                flex-direction: column;
+            }
+            
+            .period {
+                margin-top: 10px;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="header-title">
+                    <h1>Tomasz Głowacki</h1>
+                    <h2>Business Analyst & Digital Assets Specialist</h2>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Tacoronte, Spain</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+34 622 056 849</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>tomek.glowacki.kolo@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="summary">
+            <h2 class="section-title">O mnie</h2>
+            <p>Dynamic investment and finance professional with extensive experience in digital assets, technology-driven investment management, corporate finance, and financial analysis. Specializing in the intersection of technology and finance, I bring strong expertise in developing financial models, conducting in-depth market research, and managing investment portfolios. A quick learner with excellent problem-solving abilities, I excel at communicating complex technical and financial concepts to stakeholders at all levels. Known for delivering high-quality results within tight deadlines, consistently exceeding expectations and contributing to innovative, data-driven decision-making in both the financial and tech sectors.</p>
+        </div>
+        
+        <section>
+            <h2 class="section-title">Doświadczenie zawodowe</h2>
+            <div class="timeline">
+                <!-- ICEO Venture Studio -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="job-title">Business Analyst, Investment and Finance Department</div>
+                                <div class="company">ICEO Venture Studio</div>
+                            </div>
+                            <div class="period">Kwiecień 2024 - obecnie</div>
+                        </div>
+                        <div class="company-description">
+                            <p>An innovative technology company founded in 2010, specializing in creating and developing high-potential startups primarily in FinTech, blockchain, and Web 3.0 technologies. With a proven track record of launching 42 successful startups and generating over $100 million in portfolio value.</p>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Lead the validation of new venture ideas by combining advanced financial modeling, data analysis, and thorough market research.</li>
+                                <li>Conduct in-depth market sizing (TAM, SAM, SOM) and develop P&L forecasts, estimating development costs and key metrics.</li>
+                                <li>Assess the scalability and feasibility of business concepts, providing actionable recommendations.</li>
+                                <li>Present validated and refined ideas to the board, delivering compelling presentations.</li>
+                                <li>Actively participate in the research and structuring of a delta-neutral fund, collaborating with specialized firms.</li>
+                                <li>Develop and implement AI-driven tools to automate research processes, improving operational efficiency.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Franklin Templeton Investments - Research Analyst -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="job-title">Research Analyst, Blockchain VC</div>
+                                <div class="company">Franklin Templeton Investments, Digital Assets Unit</div>
+                            </div>
+                            <div class="period">Październik 2021 - Kwiecień 2024</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Conducted in-depth research and identified high-potential, innovative blockchain startups worldwide.</li>
+                                <li>Represented the team at leading industry conferences across Europe, fostering relationships with key stakeholders.</li>
+                                <li>Acted as a judge at a prominent hackathon, evaluating innovative projects and providing expert feedback.</li>
+                                <li>Produced detailed investment memos and industry reports on cutting-edge crypto and digital asset projects.</li>
+                                <li>Built robust financial models and evaluated token economics and valuations.</li>
+                                <li>Served as the Fund's data expert by designing, maintaining, and optimizing data and reporting systems.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Franklin Templeton Investments - Senior Financial Analyst -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="job-title">Senior Financial Analyst</div>
+                                <div class="company">Franklin Templeton Investments, Financial Planning and Analysis</div>
+                            </div>
+                            <div class="period">Grudzień 2018 - Wrzesień 2021</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Responsible for planning, budgeting, and projection process for multiple Lines of Business.</li>
+                                <li>Prepared comprehensive reports, produced dashboards, created product profitability models.</li>
+                                <li>Process improvement through Alteryx and Microsoft tools (Power Automate, Power Apps).</li>
+                                <li>Responsible for Legal Fee and Charitable Contributions analysis at Franklin Resources level.</li>
+                                <li>Managed confidential data for projection and budget process.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Previous roles condensed -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="job-title">Previous Roles</div>
+                                <div class="company">Franklin Templeton, Ciber Poland, Infosys BPO</div>
+                            </div>
+                            <div class="period">2014 - 2018</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Financial Analyst, Financial Strategies at Franklin Templeton (2017-2018)</li>
+                                <li>Accountant, Corporate Accounting at Franklin Templeton (2016-2017)</li>
+                                <li>Assistant Accountant, Corporate Accounting at Franklin Templeton (2014-2016)</li>
+                                <li>Accounts Payable Accountant at Ciber Poland (2013-2014)</li>
+                                <li>Accounts Payable Executive at Infosys BPO Poland (2012-2013)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="section-title">Edukacja</h2>
+            <div class="education-item">
+                <div class="job-title">Diploma in Blockchain – application in business and administration</div>
+                <div class="company">Poznan University of Economics and Business</div>
+            </div>
+            <div class="education-item">
+                <div class="job-title">MA in Accounting and Finance</div>
+                <div class="company">WSB University in Poznan</div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="section-title">Umiejętności</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Finanse i Inwestycje</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Digital Assets</span>
+                        <span class="skill-tag">Financial Modeling</span>
+                        <span class="skill-tag">Market Research</span>
+                        <span class="skill-tag">Investment Analysis</span>
+                        <span class="skill-tag">Token Economics</span>
+                        <span class="skill-tag">Blockchain</span>
+                        <span class="skill-tag">Financial Planning</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Technologie i Narzędzia</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Alteryx</span>
+                        <span class="skill-tag">Power Automate</span>
+                        <span class="skill-tag">Power Apps</span>
+                        <span class="skill-tag">Excel Advanced</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Systemy i Standardy</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PeopleSoft</span>
+                        <span class="skill-tag">SAP</span>
+                        <span class="skill-tag">WorkDay</span>
+                        <span class="skill-tag">Hyperion</span>
+                        <span class="skill-tag">US GAAP</span>
+                        <span class="skill-tag">IFRS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Kompetencje miękkie</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Komunikacja</span>
+                        <span class="skill-tag">Prezentacje</span>
+                        <span class="skill-tag">Analityczne myślenie</span>
+                        <span class="skill-tag">Rozwiązywanie problemów</span>
+                        <span class="skill-tag">Zarządzanie czasem</span>
+                        <span class="skill-tag">Praca w zespole</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="section-title">Szkolenia</h2>
+            <div class="education-item">
+                <p>Power BI, Python for Data Analysis, Databricks, Visual Studio Code, SQL Management Studio, Financial Valuations, PeopleSoft (GL, AP, FA, Query Manager), Financial Accounting with SAP, Cognos, Alteryx, Hyperion (budgeting, reporting, Essbase), WorkDay (HR, Finance), Anti-Corruption Policy, Anti-Money Laundering, US GAAP, Excel Advanced.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="section-title">Zainteresowania</h2>
+            <div class="interests">
+                <div class="interests-tags">
+                    <div class="interest-tag">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Financial markets</span>
+                    </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-robot"></i>
+                        <span>Robotic solutions</span>
+                    </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-coins"></i>
+                        <span>Digital currency</span>
+                    </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Commodity markets</span>
+                    </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-snowboarding"></i>
+                        <span>Extreme sports</span>
+                    </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-music"></i>
+                        <span>Music</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Tomasz Głowacki. Wszystkie prawa zastrzeżone.</p>
+            <button class="download-cv">Pobierz CV w PDF</button>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadButton = document.querySelector('.download-cv');
+            
+            downloadButton.addEventListener('click', function() {
+                alert('Funkcja pobierania CV będzie dostępna po podłączeniu do serwera.');
+            });
+            
+            // Dodanie animacji przy przewijaniu
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.timeline-item, .education-item, .skill-category, .interests').forEach(item => {
+                observer.observe(item);
+                item.style.opacity = '0';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                item.style.transform = 'translateY(20px)';
+            });
+            
+            document.addEventListener('scroll', function() {
+                document.querySelectorAll('.fade-in').forEach(item => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
